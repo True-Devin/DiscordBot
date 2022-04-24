@@ -4,6 +4,7 @@ import requests
 
 def main(character, player_search):
     value_list = []
+    new_list = []
     character_search = character.upper()[0:2]
     source = requests.get(f'http://ratingupdate.info/top/{character_search}').text
     soup = BeautifulSoup(source, 'lxml')

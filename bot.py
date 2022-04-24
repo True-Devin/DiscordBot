@@ -26,7 +26,7 @@ async def hello(ctx):
 
 
 @bot.command()
-async def elo(ctx, search):
+async def elo(ctx, *, search):
     search_result = main2(search)
     if search_result is None:
         print("No Player found")
@@ -43,7 +43,7 @@ async def elo(ctx, search):
 
 
 @bot.command()
-async def elo2(ctx, character, search):
+async def elo2(ctx, character, *, search):
     search_result = main(character, search)
     if search_result is None:
         print("No Player found")

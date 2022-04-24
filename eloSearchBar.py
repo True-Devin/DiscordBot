@@ -4,6 +4,8 @@ import requests
 
 def main2(player_search):
     webscraped_list = webscrape(player_search)
+    if not webscraped_list:
+        return None
     search_result = search(player_search, webscraped_list)
 
     if search_result is not False:
@@ -19,6 +21,7 @@ def main2(player_search):
 
 def webscrape(player_search):
     value_list = []
+    new_list = []
     source = requests.get(f'http://ratingupdate.info/?name={player_search}').text
     soup = BeautifulSoup(source, 'lxml')
 
@@ -31,6 +34,7 @@ def webscrape(player_search):
             value_list.append(player_id)
         value_list.append(player_data)
         new_list = [value_list[i:i + 5] for i in range(0, len(value_list), 5)]
+
     return new_list
 
 
